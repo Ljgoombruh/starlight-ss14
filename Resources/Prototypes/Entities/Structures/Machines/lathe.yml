@@ -96,6 +96,39 @@
       SpaceLube: 0.8 # being faster means less heat so lube needs to be nerfed
       SpaceGlue: 5 # no change from normal lathe, overheat!!!
 
+# SL Edit Start: parent magnetic entity
+- type: entity
+  abstract: true
+  id: BaseMagneticEntity
+  components:
+    - type: ItemToggle
+      onUse: false
+      onActivate: false
+      verbToggleOn: "Activate Magnet"
+      verbToggleOff: "Deactivate Magnet"
+      soundActivate:
+        collection: sparks
+        params:
+          variation: 0.250
+      soundDeactivate:
+        collection: sparks
+        params:
+          variation: 0.250
+    - type: AltUseToggle
+    - type: ComponentToggler
+      components:
+      - type: MagnetPickup
+        range: 3
+        requiresEquipping: false
+        slotFlags: 0
+    - type: GenericVisualizer
+      visuals:
+        enum.ToggleableVisuals.Enabled:
+          enum.ToggleableVisuals.Layer:
+            True: { visible: true }
+            False: { visible: false }
+# SL End
+
 - type: entity
   id: Autolathe
   parent: BaseLatheLube
@@ -658,7 +691,7 @@
     - HostileCubesStatic
 
 - type: entity
-  parent: BaseLathe
+  parent: [BaseLathe, BaseMagneticEntity] #SL Edit: Make magnetic
   id: OreProcessor
   name: ore processor
   description: It produces sheets and ingots using ores.
@@ -694,34 +727,6 @@
       staticPacks:
       - OreSmelting
       - RGlassSmelting
-    # starlight edit start - add magnet pickup to ore processors
-    - type: ItemToggle
-      onUse: false
-      onActivate: false
-      verbToggleOn: "Activate Magnet"
-      verbToggleOff: "Deactivate Magnet"
-      soundActivate:
-        collection: sparks
-        params:
-          variation: 0.250
-      soundDeactivate:
-        collection: sparks
-        params:
-          variation: 0.250
-    - type: AltUseToggle
-    - type: ComponentToggler
-      components:
-      - type: MagnetPickup
-        range: 3
-        requiresEquipping: false
-        slotFlags: 0
-    - type: GenericVisualizer
-      visuals:
-        enum.ToggleableVisuals.Enabled:
-          enum.ToggleableVisuals.Layer:
-            True: { visible: true }
-            False: { visible: false }
-    # starlight edit end
 
 - type: entity
   parent: OreProcessor
