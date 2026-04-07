@@ -131,7 +131,7 @@
 
 - type: entity
   id: Autolathe
-  parent: BaseLatheLube
+  parent: [BaseLatheLube, BaseMagneticEntity] # SL: Magnetic lathes
   name: autolathe
   description: It produces basic items using metal and glass. Has the ability to process blueprints to print new recipes.
   components:
@@ -148,6 +148,11 @@
       map: ["enum.MaterialStorageVisualLayers.Inserting"]
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
+    # Starlight Edit Start - Add magnet layer
+    - state: magnet_on
+      map: ["enum.ToggleableVisuals.Layer"]
+      visible: false
+    # Starlight Edit End
   - type: Machine
     board: AutolatheMachineCircuitboard
   - type: MaterialStorage
