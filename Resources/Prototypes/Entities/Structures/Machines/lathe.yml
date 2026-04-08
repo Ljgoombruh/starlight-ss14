@@ -96,7 +96,7 @@
       SpaceLube: 0.8 # being faster means less heat so lube needs to be nerfed
       SpaceGlue: 5 # no change from normal lathe, overheat!!!
 
-# SL Edit Start: parent magnetic entity
+# SL Edit Start: an entity that can be alt-clicked to toggle magnetism
 - type: entity
   abstract: true
   id: BaseMagneticEntity
@@ -222,7 +222,7 @@
 
 - type: entity
   id: Protolathe
-  parent: BaseLatheLube
+  parent: [BaseLatheLube, BaseMagneticEntity] # SL: Magnetic lathes
   name: protolathe
   description: Converts raw materials into advanced items.
   components:
@@ -239,6 +239,11 @@
       map: ["enum.MaterialStorageVisualLayers.Inserting"]
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
+    # Starlight Edit Start - Add magnet layer
+    - state: magnet_on
+      map: ["enum.ToggleableVisuals.Layer"]
+      visible: false
+    # Starlight Edit End
   - type: Machine
     board: ProtolatheMachineCircuitboard
   - type: MaterialStorage
