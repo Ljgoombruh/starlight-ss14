@@ -474,7 +474,7 @@
 
 - type: entity
   id: SecurityTechFab
-  parent: BaseLatheLube
+  parent: [BaseLatheLube, BaseMagneticEntity] # SL: Magnetic lathes
   name: security techfab
   description: Prints equipment for use by security crew.
   components:
@@ -491,6 +491,11 @@
       map: ["enum.MaterialStorageVisualLayers.Inserting"]
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
+    # Starlight Edit Start - Add magnet layer
+    - state: magnet_on
+      map: ["enum.ToggleableVisuals.Layer"]
+      visible: false
+    # Starlight Edit End
   - type: Machine
     board: SecurityTechFabCircuitboard
   - type: Lathe
@@ -534,7 +539,7 @@
 
 - type: entity
   id: AmmoTechFab
-  parent: BaseLatheLube
+  parent: [BaseLatheLube, BaseMagneticEntity] # SL: Magnetic lathes
   name: ammo techfab
   description: Prints the bare minimum of bullets that any budget military or armory could need. Nothing fancy.
   components:
@@ -551,6 +556,11 @@
           map: ["enum.MaterialStorageVisualLayers.Inserting"]
         - state: panel
           map: ["enum.WiresVisualLayers.MaintenancePanel"]
+        # Starlight Edit Start - Add magnet layer
+        - state: magnet_on
+          map: ["enum.ToggleableVisuals.Layer"]
+          visible: false
+        # Starlight Edit End
     - type: Machine
       board: AmmoTechFabCircuitboard
     - type: Lathe
@@ -569,7 +579,7 @@
 
 - type: entity
   id: MedicalTechFab
-  parent: BaseLatheLube
+  parent: [BaseLatheLube, BaseMagneticEntity] # SL: Magnetic lathes
   name: medical techfab
   description: Prints equipment for use by the medbay.
   components:
@@ -586,6 +596,11 @@
       map: ["enum.MaterialStorageVisualLayers.Inserting"]
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
+    # Starlight Edit Start - Add magnet layer
+    - state: magnet_on
+      map: ["enum.ToggleableVisuals.Layer"]
+      visible: false
+    # Starlight Edit End
   - type: Lathe
     idleState: icon
     runningState: icon
