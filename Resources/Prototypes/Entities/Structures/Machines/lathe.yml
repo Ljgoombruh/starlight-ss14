@@ -813,7 +813,7 @@
     - SheetifierStatic
 
 - type: entity
-  parent: BaseLathe
+  parent: [BaseLathe, BaseMagneticEntity] #SL Edit: Make magnetic
   id: CutterMachine
   name: cutter machine
   description: This is a cutter. It cuts. Add variety to your station floor with eye-pleasing patterns! Don't stick your fingers in.
@@ -831,6 +831,11 @@
       map: ["enum.PowerDeviceVisualLayers.Powered"]
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
+    # Starlight Edit Start - Add magnet layer
+    - state: magnet_on
+      map: ["enum.ToggleableVisuals.Layer"]
+      visible: false
+    # Starlight Edit End
   - type: Machine
     board: CutterMachineCircuitboard
   - type: Lathe
