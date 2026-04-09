@@ -629,7 +629,7 @@
   - type: OreSiloClient
 
 - type: entity
-  parent: BaseLathe
+  parent: [BaseLathe, BaseMagneticEntity] # SL: Magnetic lathes
   id: UniformPrinter
   name: uniform printer
   description: Prints new or replacement uniforms.
@@ -642,6 +642,11 @@
     layers:
     - state: icon
       map: ["enum.LatheVisualLayers.IsRunning"]
+    # Starlight Edit Start - Add magnet layer
+    - state: magnet_on
+      map: ["enum.ToggleableVisuals.Layer"]
+      visible: false
+    # Starlight Edit End
   - type: Machine
     board: UniformPrinterMachineCircuitboard
   - type: Lathe
