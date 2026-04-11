@@ -1,6 +1,6 @@
 - type: entity
   id: MachineMaterialSilo
-  parent: [ BaseMachinePowered, ConstructibleMachine ]
+  parent: [ BaseMachinePowered, ConstructibleMachine, BaseMagneticEntity]
   name: material silo
   description: An advanced machine, capable of using bluespace technology to transmit materials to nearby machines.
   components:
@@ -10,6 +10,11 @@
     layers:
     - state: silo
       map: [ "base" ]
+    # Starlight Edit Start - Add magnet layer
+    - state: magnet_on
+      map: ["enum.ToggleableVisuals.Layer"]
+      visible: false
+    # Starlight Edit End
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -17,6 +22,12 @@
         base:
           True: { state: silo_active }
           False: { state: silo }
+      # Starlight Edit Start - Add visualizer
+      enum.ToggleableVisuals.Enabled:
+        enum.ToggleableVisuals.Layer:
+          True: { visible: true }
+          False: { visible: false }
+      # Starlight Edit End
   - type: OreSilo
   - type: MaterialStorage
     whitelist:
