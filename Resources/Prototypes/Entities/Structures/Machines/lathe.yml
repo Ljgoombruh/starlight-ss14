@@ -389,7 +389,7 @@
 
 - type: entity
   id: ExosuitFabricator
-  parent: BaseLatheLube
+  parent: [BaseLatheLube, BaseMagneticEntity] # SL: Magnetic lathes
   name: exosuit fabricator
   description: Creates parts for robotics and other mechanical needs.
   components:
@@ -402,6 +402,11 @@
       map: ["enum.MaterialStorageVisualLayers.Inserting"]
     - state: fab-o
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
+    # Starlight Edit Start - Add magnet layer
+    - state: magnet_on
+      map: ["enum.ToggleableVisuals.Layer"]
+      visible: false
+    # Starlight Edit End
   - type: Machine
     board: ExosuitFabricatorMachineCircuitboard
   - type: Lathe
